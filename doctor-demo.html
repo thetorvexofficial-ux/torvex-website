@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A sample clinic website concept created by TORVEX.">
+  <title>CarePlus Clinic | TORVEX Demo</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7fafc;
+      color: #152b3b;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; }
+
+    .demo-banner {
+      background: #fff1cc;
+      color: #674700;
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 12px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: #fff;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: #087f8c;
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #294150;
+      font-size: 14px;
+    }
+
+    nav a:hover { color: #087f8c; }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      border-radius: 8px;
+      background: #087f8c;
+      color: white;
+      padding: 13px 20px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .btn:hover { background: #066570; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 45px;
+      padding: 75px 8%;
+      background: linear-gradient(135deg, #e6f7f7, #f4f8ff);
+    }
+
+    .eyebrow {
+      color: #087f8c;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.12;
+      margin: 18px 0;
+    }
+
+    .hero p, section p {
+      color: #5b6d7b;
+    }
+
+    .hero p {
+      max-width: 530px;
+      margin-bottom: 25px;
+    }
+
+    .doctor-image {
+      min-height: 340px;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 130px;
+      background: linear-gradient(145deg, #b9e7e7, #e6f5ff);
+      box-shadow: 0 20px 60px #163e4b12;
+    }
+
+    section { padding: 75px 8%; }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 35px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 39px);
+      margin-bottom: 12px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      padding: 28px;
+      background: white;
+      border: 1px solid #e1ebef;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px #203d4a08;
+    }
+
+    .card .icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 { margin-bottom: 9px; }
+    .card p { font-size: 14px; }
+
+    .about {
+      background: #fff;
+      text-align: center;
+    }
+
+    .about-content {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .about-label {
+      display: inline-block;
+      margin-top: 20px;
+      color: #087f8c;
+      font-weight: bold;
+    }
+
+    .appointment {
+      background: #e9f5f6;
+    }
+
+    form {
+      max-width: 620px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 16px;
+      background: white;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    input, select, textarea {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      margin-top: 6px;
+      border: 1px solid #cfdee3;
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #9bd8dc;
+      border-color: #087f8c;
+    }
+
+    form .btn {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .form-note {
+      margin-top: 15px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    footer {
+      background: #102b3a;
+      color: white;
+      text-align: center;
+      padding: 30px 8%;
+    }
+
+    footer p {
+      color: #c5d8e0;
+      font-size: 13px;
+      margin-top: 7px;
+    }
+
+    @media (max-width: 760px) {
+      nav { padding: 18px 6%; }
+      nav .links { gap: 13px; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 50px 6%;
+      }
+      .doctor-image { min-height: 240px; font-size: 100px; }
+      section { padding: 55px 6%; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo-banner">
+    DEMO WEBSITE — fictional clinic and doctor profile, not a real medical practice.
+  </div>
+
+  <nav>
+    <a class="logo" href="#home">CarePlus Clinic</a>
+
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#appointment">Appointment</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero" id="home">
+      <div>
+        <div class="eyebrow">YOUR HEALTH, OUR PRIORITY</div>
+        <h1>Care that puts you first.</h1>
+        <p>
+          A sample clinic website experience focused on clear information,
+          a welcoming design and convenient appointment requests.
+        </p>
+        <a class="btn" href="#appointment">Request an Appointment</a>
+      </div>
+
+      <div class="doctor-image" aria-label="Doctor illustration">
+        🧑‍⚕️
+      </div>
+    </header>
+
+    <section id="services">
+      <div class="section-heading">
+        <div class="eyebrow">WHAT WE OFFER</div>
+        <h2>Our Services</h2>
+        <p>Example service cards for a clinic website concept.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🩺</div>
+          <h3>General Consultation</h3>
+          <p>Sample content for routine consultations and general health enquiries.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">💚</div>
+          <h3>Preventive Care</h3>
+          <p>Example information about preventive health and wellness services.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">📋</div>
+          <h3>Health Check-ups</h3>
+          <p>A placeholder for clinic screening and health assessment services.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-content">
+        <div class="eyebrow">ABOUT THE CLINIC</div>
+        <h2>Meet Dr. Aarav Sharma</h2>
+        <p>
+          This is a fictional doctor profile for demonstrating a professional
+          clinic website. A real clinic should replace this text with the
+          doctor's verified qualifications, registration and experience.
+        </p>
+        <span class="about-label">A TORVEX Website Concept</span>
+      </div>
+    </section>
+
+    <section class="appointment" id="appointment">
+      <div class="section-heading">
+        <div class="eyebrow">GET IN TOUCH</div>
+        <h2>Request an Appointment</h2>
+        <p>Try the form layout. This demonstration does not send or save information.</p>
+      </div>
+
+      <form id="appointmentForm">
+        <label for="patientName">Your Name</label>
+        <input id="patientName" name="patientName" type="text"
+          placeholder="Enter your name" required>
+
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel"
+          placeholder="Enter your phone number" required>
+
+        <label for="service">Choose a Service</label>
+        <select id="service" name="service" required>
+          <option value="">Select a service</option>
+          <option>General Consultation</option>
+          <option>Preventive Care</option>
+          <option>Health Check-up</option>
+        </select>
+
+        <label for="message">Message (Optional)</label>
+        <textarea id="message" name="message" rows="4"
+          placeholder="Your message"></textarea>
+
+        <button class="btn" type="submit">Test Appointment Form</button>
+
+        <p class="form-note">
+          Demo only. Do not enter real medical or personal information.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <strong>CarePlus Clinic | Website Concept by TORVEX</strong>
+    <p>Fictional demo. Real clinic contact details and timings are not configured.</p>
+  </footer>
+
+  <script>
+    document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("This is a demo form. No information has been sent or stored.");
+    });
+  </script>
+</body>
+</html>

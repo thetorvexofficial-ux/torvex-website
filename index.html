@@ -1,0 +1,1608 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050810">
+
+    <title>TORVEX | Powering What's Next</title>
+    <meta name="description" content="TORVEX builds modern websites and digital solutions for growing businesses.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #050810;
+            --surface: rgba(13, 20, 35, 0.88);
+            --blue: #4388ff;
+            --blue-light: #83b5ff;
+            --text: #f5f7ff;
+            --muted: #a1acc1;
+            --border: rgba(130, 165, 220, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Animated background */
+
+        #c {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        nav,
+        main,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 7%;
+            background: rgba(5, 8, 16, 0.78);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: #bac4d7;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue-light);
+        }
+
+        /* Buttons */
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            padding: 14px 22px;
+            border-radius: 9px;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            color: white;
+            background: linear-gradient(135deg, #3278f6, #5c9cff);
+            box-shadow: 0 8px 32px rgba(45, 115, 255, 0.22);
+            border: 1px solid rgba(140, 185, 255, 0.25);
+        }
+
+        .button-primary:hover {
+            box-shadow: 0 10px 36px rgba(45, 115, 255, 0.38);
+        }
+
+        .button-secondary {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.045);
+            color: white;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 100px;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(
+                ellipse 70% 55% at 50% 48%,
+                rgba(5, 8, 16, 0.35),
+                transparent 75%
+            );
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(67, 136, 255, 0.28);
+            border-radius: 40px;
+            background: rgba(20, 57, 110, 0.28);
+            color: var(--blue-light);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            background: #60a5ff;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #4388ff;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            50% { opacity: 0.4; }
+        }
+
+        h1 {
+            font-size: clamp(43px, 7vw, 82px);
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: -4px;
+            margin-bottom: 27px;
+        }
+
+        h1 span {
+            color: transparent;
+            background: linear-gradient(115deg, #4c91ff, #a5d2ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .hero-description {
+            max-width: 610px;
+            margin: 0 auto;
+            color: #b1bdd1;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+            color: #a5b4cb;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .scroll-mouse {
+            height: 29px;
+            width: 19px;
+            border: 1px solid #7185a7;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-mouse::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 7px;
+            width: 3px;
+            height: 6px;
+            background: var(--blue-light);
+            border-radius: 3px;
+            animation: scroll 1.4s infinite;
+        }
+
+        @keyframes scroll {
+            to {
+                transform: translateY(8px);
+                opacity: 0;
+            }
+        }
+
+        /* General sections */
+
+        .section {
+            padding: 100px 7%;
+            background: linear-gradient(
+                180deg,
+                rgba(5, 8, 16, 0.35),
+                rgba(5, 8, 16, 0.94) 18%,
+                rgba(5, 8, 16, 0.97)
+            );
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 48px;
+        }
+
+        .section-label {
+            color: var(--blue-light);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            font-size: clamp(30px, 4vw, 46px);
+            font-weight: 400;
+            letter-spacing: -1.6px;
+            line-height: 1.2;
+            margin-bottom: 17px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        /* Services and portfolio grids */
+
+        .service-grid,
+        .work-grid {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .service-card,
+        .work-card,
+        .demo-work-card {
+            min-width: 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: rgba(11, 17, 30, 0.88);
+            backdrop-filter: blur(10px);
+            transition: transform 0.25s, border-color 0.25s;
+        }
+
+        .service-card:hover,
+        .work-card:hover,
+        .demo-work-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(67, 136, 255, 0.55);
+        }
+
+        /* Services */
+
+        .service-card {
+            padding: 30px;
+        }
+
+        .service-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 47px;
+            height: 47px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            background: rgba(54, 119, 231, 0.14);
+            border: 1px solid rgba(67, 136, 255, 0.24);
+            color: var(--blue-light);
+            font-size: 22px;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 13px;
+        }
+
+        .service-card p,
+        .work-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--blue-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 10px;
+        }
+
+        /* Original portfolio cards */
+
+        .work-card {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .work-preview {
+            min-height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            background:
+                radial-gradient(
+                    ellipse at 50% 30%,
+                    rgba(57, 122, 239, 0.25),
+                    transparent 70%
+                ),
+                #0c1322;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .preview-label {
+            font-size: 10px;
+            color: var(--blue-light);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .preview-title {
+            font-size: clamp(19px, 2vw, 25px);
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .work-info {
+            padding: 24px;
+        }
+
+        .work-info small {
+            display: inline-block;
+            margin-top: 15px;
+            color: #8da0bd;
+            font-size: 11px;
+        }
+
+        /* Clickable demo cards */
+
+        .demo-work-card {
+            display: block;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .demo-work-image {
+            min-height: 210px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .demo-work-image > span {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .demo-work-icon {
+            font-size: 76px;
+            font-weight: 800;
+            transition: transform 0.35s;
+        }
+
+        .demo-work-card:hover .demo-work-icon {
+            transform: scale(1.12) rotate(-5deg);
+        }
+
+        .doctor-image {
+            background: radial-gradient(circle at center, #b9e7ed, #e9f8fa 70%);
+            color: #176b7a;
+        }
+
+        .gym-image {
+            background: radial-gradient(circle at center, #632024, #171010 75%);
+            color: #ff4149;
+        }
+
+        .watch-image {
+            background: radial-gradient(circle at center, #514027, #15130f 75%);
+            color: #d9b775;
+        }
+
+        .demo-work-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 22px;
+        }
+
+        .demo-work-info h3 {
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .demo-work-info p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .demo-work-arrow {
+            flex-shrink: 0;
+            font-size: 24px;
+            color: #7aaaff;
+        }
+
+        /* About */
+
+        .about-wrap {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            padding: 50px 25px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: rgba(10, 17, 30, 0.82);
+        }
+
+        .about-wrap p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        /* Process */
+
+        .process-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .process-step {
+            padding: 23px;
+            border-top: 1px solid rgba(67, 136, 255, 0.45);
+            background: rgba(12, 18, 31, 0.75);
+        }
+
+        .step-number {
+            color: var(--blue-light);
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .process-step p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* Reviews */
+
+        .reviews-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 35px 25px;
+            text-align: center;
+            background: rgba(11, 17, 30, 0.88);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .reviews-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin: 12px 0 20px;
+        }
+
+        .reviews-number {
+            color: var(--text);
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .reviews-number span {
+            color: var(--muted);
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        .reviews-info {
+            text-align: left;
+        }
+
+        .reviews-stars {
+            color: #ffc857;
+            font-size: 24px;
+            letter-spacing: 3px;
+        }
+
+        .reviews-info p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .reviews-disclaimer {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* Contact form */
+
+        .contact-wrap {
+            max-width: 720px;
+            margin: auto;
+            padding: 35px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: rgba(10, 17, 30, 0.92);
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            min-width: 0;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            font-size: 12px;
+            color: #c7d2e5;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            min-width: 0;
+            padding: 13px 14px;
+            background: #080e1b;
+            border: 1px solid #253148;
+            border-radius: 8px;
+            color: white;
+            font: inherit;
+            font-size: 13px;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            outline: 2px solid rgba(67, 136, 255, 0.35);
+            border-color: var(--blue);
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .field select option {
+            background: #080e1b;
+        }
+
+        .form-note {
+            color: #8998b0;
+            font-size: 11px;
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+
+        .footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid var(--border);
+            background: rgba(4, 7, 13, 0.96);
+        }
+
+        .footer .logo {
+            margin-bottom: 12px;
+        }
+
+        .footer p {
+            color: #8793a8;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .footer-note {
+            margin-top: 14px;
+            font-size: 10px !important;
+        }
+
+        /* Entrance animation */
+
+        .fade-in {
+            animation: enter 1s ease both;
+        }
+
+        @keyframes enter {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tablet */
+
+        @media (max-width: 800px) {
+            .site-nav {
+                padding: 17px 5%;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .service-grid,
+            .work-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section {
+                padding: 75px 5%;
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 540px) {
+            .site-nav {
+                padding: 16px 5%;
+            }
+
+            .logo {
+                font-size: 19px;
+                letter-spacing: 2px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .nav-links a:nth-child(2) {
+                display: none;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .eyebrow {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            .button {
+                padding: 13px 16px;
+                font-size: 12px;
+            }
+
+            .service-grid,
+            .work-grid,
+            .process-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .section {
+                padding: 65px 20px;
+            }
+
+            .contact-wrap {
+                padding: 22px;
+            }
+
+            .contact-form {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .field.full {
+                grid-column: auto;
+            }
+
+            .scroll-indicator {
+                bottom: 18px;
+            }
+
+            .demo-work-image {
+                min-height: 190px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="c" aria-hidden="true"></canvas>
+
+    <!-- NAVIGATION -->
+    <nav class="site-nav">
+        <a class="logo" href="#home" aria-label="TORVEX home">
+            TORVEX<span>.</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#work">Our Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <a class="button button-primary nav-cta" href="#contact">
+            Get Started ↗
+        </a>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero-content fade-in">
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    Digital experiences for growing businesses
+                </div>
+
+                <h1>
+                    TORVEX<br>
+                    <span>Powering What's Next.</span>
+                </h1>
+
+                <p class="hero-description">
+                    We build modern websites and explore intelligent digital
+                    solutions that help businesses move forward.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#work">
+                        Explore Our Work ↗
+                    </a>
+                    <a class="button button-secondary" href="#contact">
+                        Let's Talk
+                    </a>
+                </div>
+            </div>
+
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-mouse"></div>
+                Scroll to explore
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="section" id="services">
+            <div class="section-heading">
+                <div class="section-label">What We Do</div>
+                <h2>Digital solutions.<br>Built with purpose.</h2>
+                <p>
+                    Practical, thoughtful digital experiences designed around
+                    your business and its customers.
+                </p>
+            </div>
+
+            <div class="service-grid">
+                <article class="service-card">
+                    <div class="service-icon">↗</div>
+                    <h3>Website Development</h3>
+                    <p>
+                        Responsive, modern websites that make your business
+                        look professional and help customers understand your
+                        services.
+                    </p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">✳</div>
+                    <h3>AI Automation</h3>
+                    <p>
+                        We're developing our AI automation capabilities to
+                        help businesses simplify repetitive tasks and workflows.
+                    </p>
+                    <span class="coming-soon">In development</span>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">◇</div>
+                    <h3>Digital Business Solutions</h3>
+                    <p>
+                        Explore practical digital tools and better online
+                        experiences tailored to the needs of growing businesses.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO: ALL SIX CARDS IN ONE GRID -->
+        <section class="section" id="work">
+            <div class="section-heading">
+                <div class="section-label">Selected Concepts</div>
+                <h2>Ideas brought to life.</h2>
+                <p>
+                    A preview of the kinds of websites TORVEX aims to build.
+                    These are concept projects, not client work.
+                </p>
+            </div>
+
+            <div class="work-grid">
+
+                <!-- CONCEPT 1 -->
+                <article class="work-card">
+                    <div class="work-preview">
+                        <div>
+                            <div class="preview-label">Fitness / Wellness</div>
+                            <div class="preview-title">PULSE STUDIO</div>
+                        </div>
+                    </div>
+
+                    <div class="work-info">
+                        <h3>Fitness Studio</h3>
+                        <p>
+                            A bold, energetic concept for a fitness brand with
+                            class information and membership enquiries.
+                        </p>
+                        <small>Concept design · Demo project</small>
+                    </div>
+                </article>
+
+                <!-- CONCEPT 2 -->
+                <article class="work-card">
+                    <div class="work-preview">
+                        <div>
+                            <div class="preview-label">Education</div>
+                            <div class="preview-title">NEXUS ACADEMY</div>
+                        </div>
+                    </div>
+
+                    <div class="work-info">
+                        <h3>Coaching Institute</h3>
+                        <p>
+                            A clear education website concept highlighting
+                            courses, learning benefits and enquiry options.
+                        </p>
+                        <small>Concept design · Demo project</small>
+                    </div>
+                </article>
+
+                <!-- CONCEPT 3 -->
+                <article class="work-card">
+                    <div class="work-preview">
+                        <div>
+                            <div class="preview-label">Property / Real Estate</div>
+                            <div class="preview-title">HORIZON LIVING</div>
+                        </div>
+                    </div>
+
+                    <div class="work-info">
+                        <h3>Real Estate</h3>
+                        <p>
+                            A polished concept for presenting property listings
+                            and helping visitors request more information.
+                        </p>
+                        <small>Concept design · Demo project</small>
+                    </div>
+                </article>
+
+                <!-- DEMO 1: HEALTHCARE -->
+                <a class="demo-work-card"
+                   href="doctor-demo.html"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Open CarePoint Clinic demo website">
+
+                    <div class="demo-work-image doctor-image">
+                        <span>01 / HEALTHCARE</span>
+                        <div class="demo-work-icon">✚</div>
+                    </div>
+
+                    <div class="demo-work-info">
+                        <div>
+                            <h3>CarePoint Clinic</h3>
+                            <p>Doctor &amp; Healthcare Website</p>
+                        </div>
+                        <span class="demo-work-arrow">↗</span>
+                    </div>
+                </a>
+
+                <!-- DEMO 2: GYM -->
+                <a class="demo-work-card"
+                   href="gym-demo.html"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Open IRONFORGE gym demo website">
+
+                    <div class="demo-work-image gym-image">
+                        <span>02 / FITNESS</span>
+                        <div class="demo-work-icon">↗</div>
+                    </div>
+
+                    <div class="demo-work-info">
+                        <div>
+                            <h3>IRONFORGE</h3>
+                            <p>Fitness &amp; Gym Website</p>
+                        </div>
+                        <span class="demo-work-arrow">↗</span>
+                    </div>
+                </a>
+
+                <!-- DEMO 3: LUXURY WATCH -->
+                <a class="demo-work-card"
+                   href="watch-demo.html"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Open AURELUX watch demo website">
+
+                    <div class="demo-work-image watch-image">
+                        <span>03 / LUXURY</span>
+                        <div class="demo-work-icon">◷</div>
+                    </div>
+
+                    <div class="demo-work-info">
+                        <div>
+                            <h3>AURELUX</h3>
+                            <p>Luxury Watch Brand Website</p>
+                        </div>
+                        <span class="demo-work-arrow">↗</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="about-wrap">
+                <div class="section-label">Why TORVEX</div>
+                <h2>Technology should move you forward.</h2>
+                <p>
+                    Our approach starts with understanding your goals.
+                    We focus on responsive design, clear communication and
+                    practical solutions—with a commitment to honest
+                    expectations and a transparent process.
+                </p>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="section" id="process">
+            <div class="section-heading">
+                <div class="section-label">Our Process</div>
+                <h2>From idea to launch.</h2>
+                <p>
+                    A straightforward process keeps every project focused
+                    and clear.
+                </p>
+            </div>
+
+            <div class="process-grid">
+                <article class="process-step">
+                    <div class="step-number">01 / DISCOVER</div>
+                    <h3>Understand</h3>
+                    <p>
+                        We learn about your business, audience and goals.
+                    </p>
+                </article>
+
+                <article class="process-step">
+                    <div class="step-number">02 / PLAN</div>
+                    <h3>Define</h3>
+                    <p>
+                        We agree on scope, priorities and the project direction.
+                    </p>
+                </article>
+
+                <article class="process-step">
+                    <div class="step-number">03 / BUILD</div>
+                    <h3>Create</h3>
+                    <p>
+                        We develop and review the website with care.
+                    </p>
+                </article>
+
+                <article class="process-step">
+                    <div class="step-number">04 / DELIVER</div>
+                    <h3>Launch</h3>
+                    <p>
+                        We prepare the final website for launch and handover.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section class="section" id="reviews">
+            <div class="section-heading">
+                <div class="section-label">Reviews &amp; Reputation</div>
+                <h2>Trust starts with a great experience.</h2>
+                <p>
+                    Our goal is to deliver thoughtful digital experiences
+                    and build lasting relationships with businesses.
+                </p>
+            </div>
+
+            <div class="reviews-card">
+                <div class="reviews-rating">
+                    <div class="reviews-number">4.8<span>/5</span></div>
+
+                    <div class="reviews-info">
+                        <div class="reviews-stars" aria-label="Illustrative rating">
+                            ★★★★★
+                        </div>
+                        <p>Illustrative rating · 57</p>
+                    </div>
+                </div>
+
+                <p class="reviews-disclaimer">
+                    Sample display only. This is not a verified customer rating.
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+            <div class="section-heading">
+                <div class="section-label">Get In Touch</div>
+                <h2>Let's build something useful.</h2>
+                <p>
+                    Tell us a little about your project. Your email app will
+                    open with the details ready to send.
+                </p>
+            </div>
+
+            <div class="contact-wrap">
+                <form class="contact-form" id="contact-form">
+                    <input type="hidden" name="access_key" value="2469edaf-86c3-4324-9b75-436c5a5d16ac">
+
+                    <div class="field">
+                        <label for="name">Your name *</label>
+                        <input
+                            id="name"
+                            name="name"
+                            required
+                            autocomplete="name"
+                            placeholder="Full name">
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email address *</label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            required
+                            autocomplete="email"
+                            placeholder="you@example.com">
+                    </div>
+
+                    <div class="field">
+                        <label for="business">Business name</label>
+                        <input
+                            id="business"
+                            name="business"
+                            placeholder="Your business">
+                    </div>
+
+                    <div class="field">
+                        <label for="service">Service interested in *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Choose a service</option>
+                            <option>Website Development</option>
+                            <option>AI Automation (future availability)</option>
+                            <option>Digital Business Solutions</option>
+                            <option>Other / Not sure yet</option>
+                        </select>
+                    </div>
+
+                    <div class="field full">
+                        <label for="message">Project details *</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            required
+                            placeholder="Tell us what you're looking to build..."></textarea>
+                    </div>
+
+                    <div class="field full">
+                        <button type="submit" class="button button-primary">
+                            Prepare Enquiry ↗
+                        </button>
+                    </div>
+                </form>
+
+                <p class="form-note">
+                    This starter form opens your email application; it does not
+                    send or store submissions automatically. Configure your
+                    real email address before accepting client enquiries.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="logo">TORVEX<span>.</span></div>
+        <p>Powering What's Next.</p>
+        <p class="footer-note">
+            © <span id="year"></span> TORVEX. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        /* Update copyright year */
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        /* Contact form */
+    
+/* Contact form - Web3Forms */
+const contactForm = document.getElementById("contact-form");
+const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+contactForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+        const formData = new FormData(contactForm);
+
+        formData.append("subject", "New TORVEX Website Enquiry");
+
+        const response = await fetch(
+            "https://api.web3forms.com/submit",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            alert("Thanks! Your enquiry has been sent successfully.");
+            contactForm.reset();
+        } else {
+            alert(
+                "Could not send your enquiry: " +
+                (result.message || "Please try again.")
+            );
+        }
+    } catch (error) {
+        alert("Network error. Please check your internet and try again.");
+    } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
+});
+
+        /* Animated blue starfield background */
+        (() => {
+            const canvas = document.getElementById("c");
+            const ctx = canvas.getContext("2d");
+
+            if (!ctx) {
+                canvas.style.display = "none";
+                return;
+            }
+
+            const reducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+            let width = 0;
+            let height = 0;
+            let stars = [];
+            let animationId = 0;
+
+            function resizeCanvas() {
+                const ratio = Math.min(
+                    window.devicePixelRatio || 1,
+                    1.5
+                );
+
+                width = window.innerWidth;
+                height = window.innerHeight;
+
+                canvas.width = Math.floor(width * ratio);
+                canvas.height = Math.floor(height * ratio);
+
+                ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+                const count = Math.min(
+                    Math.floor((width * height) / 6500),
+                    180
+                );
+
+                stars = Array.from({ length: count }, () => ({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 1.5 + 0.3,
+                    alpha: Math.random() * 0.65 + 0.2,
+                    speed: Math.random() * 0.18 + 0.025
+                }));
+
+                drawBackground();
+            }
+
+            function drawBackground() {
+                ctx.clearRect(0, 0, width, height);
+
+                const sky = ctx.createLinearGradient(
+                    0, 0, 0, height
+                );
+
+                sky.addColorStop(0, "#050817");
+                sky.addColorStop(0.55, "#07132b");
+                sky.addColorStop(1, "#0a1b3b");
+
+                ctx.fillStyle = sky;
+                ctx.fillRect(0, 0, width, height);
+
+                const glow = ctx.createRadialGradient(
+                    width * 0.5,
+                    height * 0.43,
+                    0,
+                    width * 0.5,
+                    height * 0.43,
+                    Math.max(width, height) * 0.7
+                );
+
+                glow.addColorStop(0, "rgba(30, 95, 210, 0.18)");
+                glow.addColorStop(1, "rgba(5, 8, 16, 0)");
+
+                ctx.fillStyle = glow;
+                ctx.fillRect(0, 0, width, height);
+
+                /* Stars */
+                for (const star of stars) {
+                    ctx.beginPath();
+                    ctx.arc(
+                        star.x,
+                        star.y,
+                        star.radius,
+                        0,
+                        Math.PI * 2
+                    );
+
+                    ctx.fillStyle =
+                        `rgba(190, 215, 255, ${star.alpha})`;
+
+                    ctx.fill();
+                }
+
+                /* Distant mountain silhouettes */
+                for (let layer = 0; layer < 3; layer++) {
+                    const baseY =
+                        height * (0.68 + layer * 0.09);
+
+                    ctx.beginPath();
+                    ctx.moveTo(0, height);
+
+                    ctx.lineTo(0, baseY);
+
+                    const segments = 12;
+
+                    for (let i = 0; i <= segments; i++) {
+                        const x = (width / segments) * i;
+
+                        const peak =
+                            Math.sin(i * 2.1 + layer * 3) *
+                            height * 0.045;
+
+                        const peak2 =
+                            Math.sin(i * 4.4 + layer) *
+                            height * 0.022;
+
+                        ctx.lineTo(
+                            x,
+                            baseY - peak - peak2
+                        );
+                    }
+
+                    ctx.lineTo(width, height);
+                    ctx.closePath();
+
+                    ctx.fillStyle = [
+                        "rgba(8, 24, 54, 0.42)",
+                        "rgba(7, 18, 41, 0.64)",
+                        "rgba(5, 10, 24, 0.82)"
+                    ][layer];
+
+                    ctx.fill();
+                }
+            }
+
+            function animate() {
+                if (document.hidden) {
+                    animationId = 0;
+                    return;
+                }
+
+                ctx.clearRect(0, 0, width, height);
+
+                const sky = ctx.createLinearGradient(
+                    0, 0, 0, height
+                );
+
+                sky.addColorStop(0, "#050817");
+                sky.addColorStop(0.55, "#07132b");
+                sky.addColorStop(1, "#0a1b3b");
+
+                ctx.fillStyle = sky;
+                ctx.fillRect(0, 0, width, height);
+
+                const glow = ctx.createRadialGradient(
+                    width * 0.5,
+                    height * 0.43,
+                    0,
+                    width * 0.5,
+                    height * 0.43,
+                    Math.max(width, height) * 0.7
+                );
+
+                glow.addColorStop(0, "rgba(30, 95, 210, 0.18)");
+                glow.addColorStop(1, "rgba(5, 8, 16, 0)");
+
+                ctx.fillStyle = glow;
+                ctx.fillRect(0, 0, width, height);
+
+                for (const star of stars) {
+                    ctx.beginPath();
+                    ctx.arc(
+                        star.x,
+                        star.y,
+                        star.radius,
+                        0,
+                        Math.PI * 2
+                    );
+
+                    ctx.fillStyle =
+                        `rgba(190, 215, 255, ${star.alpha})`;
+
+                    ctx.fill();
+
+                    if (!reducedMotion) {
+                        star.y -= star.speed;
+
+                        if (star.y < 0) {
+                            star.y = height;
+                            star.x = Math.random() * width;
+                        }
+                    }
+                }
+
+                for (let layer = 0; layer < 3; layer++) {
+                    const baseY =
+                        height * (0.68 + layer * 0.09);
+
+                    ctx.beginPath();
+                    ctx.moveTo(0, height);
+                    ctx.lineTo(0, baseY);
+
+                    const segments = 12;
+
+                    for (let i = 0; i <= segments; i++) {
+                        const x = (width / segments) * i;
+
+                        const peak =
+                            Math.sin(i * 2.1 + layer * 3) *
+                            height * 0.045;
+
+                        const peak2 =
+                            Math.sin(i * 4.4 + layer) *
+                            height * 0.022;
+
+                        ctx.lineTo(
+                            x,
+                            baseY - peak - peak2
+                        );
+                    }
+
+                    ctx.lineTo(width, height);
+                    ctx.closePath();
+
+                    ctx.fillStyle = [
+                        "rgba(8, 24, 54, 0.42)",
+                        "rgba(7, 18, 41, 0.64)",
+                        "rgba(5, 10, 24, 0.82)"
+                    ][layer];
+
+                    ctx.fill();
+                }
+
+                if (!reducedMotion) {
+                    animationId = requestAnimationFrame(animate);
+                }
+            }
+
+            function startAnimation() {
+                if (animationId) return;
+
+                if (reducedMotion) {
+                    drawBackground();
+                    return;
+                }
+
+                animationId = requestAnimationFrame(animate);
+            }
+
+            window.addEventListener("resize", resizeCanvas);
+
+            document.addEventListener(
+                "visibilitychange",
+                () => {
+                    if (document.hidden) {
+                        if (animationId) {
+                            cancelAnimationFrame(animationId);
+                        }
+
+                        animationId = 0;
+                    } else {
+                        startAnimation();
+                    }
+                }
+            );
+
+            resizeCanvas();
+            startAnimation();
+        })();
+    </script>
+</body>
+</html>

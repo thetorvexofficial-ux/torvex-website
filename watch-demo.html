@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURELUX — Time, Refined</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c7a56a;--cream:#eee8dc;--black:#11110f;--muted:#aaa397}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:Inter,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{height:80px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #343128;position:fixed;top:0;width:100%;z-index:10;background:#11110feF;backdrop-filter:blur(14px)}
+.logo{font:600 27px 'Cormorant Garamond',serif;letter-spacing:5px;color:var(--gold)}
+.navlinks{display:flex;align-items:center;gap:28px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.navlinks a:hover{color:var(--gold)}
+.hero{min-height:100vh;padding:140px 7% 75px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px;background:radial-gradient(ellipse at 75% 45%,#383022 0%,#171612 38%,#11110f 72%)}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:24px}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:400}
+h1{font-size:clamp(58px,8vw,108px);line-height:.88;letter-spacing:-2px}
+h1 em{color:var(--gold);font-weight:400}
+.hero p{font-size:13px;line-height:2;color:var(--muted);max-width:410px;margin:28px 0}
+.btn{display:inline-block;padding:16px 25px;border:1px solid var(--gold);color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:.3s}
+.btn:hover{background:var(--gold);color:#111;transform:translateY(-3px)}
+.watch-stage{min-height:440px;display:grid;place-items:center;position:relative;overflow:hidden}
+.watch-stage:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:#b18a4b;opacity:.13;filter:blur(70px);animation:glow 4s ease-in-out infinite alternate}
+.watch-img{width:100%;max-width:520px;max-height:590px;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 25px 35px #0009);animation:float 5s ease-in-out infinite}
+.section{padding:105px 7%}
+.section-head{text-align:center;margin-bottom:50px}
+.section-head h2{font-size:clamp(42px,6vw,72px)}
+.section-head p{color:var(--muted);font-size:12px;line-height:1.9;margin:15px auto 0;max-width:450px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.product{background:#191814;border:1px solid #302d25;transition:.35s;overflow:hidden}
+.product:hover{transform:translateY(-8px);border-color:var(--gold)}
+.product img{width:100%;height:270px;object-fit:cover;display:block;filter:brightness(.83);transition:.4s}
+.product:hover img{filter:brightness(1.05);transform:scale(1.03)}
+.product-info{padding:23px}
+.product h3{font-size:29px}
+.product p{font-size:11px;color:var(--muted);margin:8px 0 16px}
+.price{color:var(--gold);font-size:12px;letter-spacing:1px}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center;background:#e8dfce;color:#25231d}
+.story img{width:100%;height:420px;object-fit:cover}
+.story p{font-size:13px;line-height:2;color:#6b655a;margin:20px 0}
+.story .eyebrow{color:#886b3c}
+.story .btn{color:#74582b;border-color:#927344}
+.story .btn:hover{background:#927344;color:white}
+.cta{text-align:center;padding:110px 7%;background:linear-gradient(135deg,#242016,#11110f)}
+.cta h2{font-size:clamp(48px,7vw,85px)}
+.cta p{color:var(--muted);font-size:12px;margin:20px 0 30px}
+footer{padding:30px 7%;border-top:1px solid #343128;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:10px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-15px) rotate(1deg)}}
+@keyframes glow{from{transform:scale(.8);opacity:.08}to{transform:scale(1.2);opacity:.22}}
+@media(max-width:760px){
+ .navlinks{gap:12px;font-size:9px}.navlinks a:nth-child(2){display:none}
+ .hero{grid-template-columns:1fr;padding-top:130px}.watch-stage{min-height:300px}
+ .watch-img{max-height:370px}.products{grid-template-columns:1fr}
+ .product img{height:320px}.story{grid-template-columns:1fr;gap:25px}
+ .story img{height:300px}.section{padding:75px 6%}
+ footer{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#">AURELUX</a>
+  <div class="navlinks">
+    <a href="#collection">Collection</a>
+    <a href="#story">Our Story</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="reveal">
+    <div class="eyebrow">THE ART OF TIMEKEEPING</div>
+    <h1>Time,<br><em>Refined.</em></h1>
+    <p>Not simply a way to tell time. A statement of craftsmanship, character, and understated elegance.</p>
+    <a class="btn" href="#collection">Explore Collection ↗</a>
+  </div>
+  <div class="watch-stage">
+    <img class="watch-img" src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1000&q=90" alt="Luxury wristwatch">
+  </div>
+</header>
+
+<section class="section" id="collection">
+  <div class="section-head reveal">
+    <div class="eyebrow">CURATED TIMEPIECES</div>
+    <h2>The Signature Collection</h2>
+    <p>Three expressions of modern elegance. Each piece in this concept collection is designed to make an impression.</p>
+  </div>
+  <div class="products">
+    <article class="product reveal">
+      <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=85" alt="Classic watch">
+      <div class="product-info"><h3>The Classic</h3><p>Timeless lines. Everyday sophistication.</p><div class="price">CONCEPT · ₹12,999</div></div>
+    </article>
+    <article class="product reveal">
+      <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=85" alt="Minimal watch">
+      <div class="product-info"><h3>The Minimal</h3><p>Less distraction. More distinction.</p><div class="price">CONCEPT · ₹16,499</div></div>
+    </article>
+    <article class="product reveal">
+      <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=85" alt="Modern watch">
+      <div class="product-info"><h3>The Modern</h3><p>Contemporary design with a bold edge.</p><div class="price">CONCEPT · ₹19,999</div></div>
+    </article>
+  </div>
+  <p style="font-size:10px;color:#888;margin-top:25px;text-align:center">Fictional product concepts and illustrative prices — not an actual store or purchasable products.</p>
+</section>
+
+<section class="section story reveal" id="story">
+  <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?auto=format&fit=crop&w=1000&q=85" alt="Watchmaking craftsmanship">
+  <div>
+    <div class="eyebrow">OUR PHILOSOPHY</div>
+    <h2 style="font-size:clamp(44px,6vw,75px);line-height:.95">Made to Outlast<br>the Moment.</h2>
+    <p>AURELUX is a fictional luxury watch brand concept. Its design language celebrates clean proportions, considered details, and a belief that true style never needs to shout.</p>
+    <a class="btn" href="#contact">Discover AURELUX ↗</a>
+  </div>
+</section>
+
+<section class="cta reveal" id="contact">
+  <div class="eyebrow">A DIFFERENT SENSE OF TIME</div>
+  <h2>Elegance, Without Noise.</h2>
+  <p>Luxury is not about having more. It is about choosing with intention.</p>
+  <a class="btn" href="mailto:hello@torvex.example?subject=AURELUX%20Website%20Demo">Contact the Concept Team ↗</a>
+</section>
+
+<footer><a class="logo" href="#">AURELUX</a><span>Concept website by TORVEX · Fictional watch brand</span></footer>
+<script>
+const observer = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}
+ });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
